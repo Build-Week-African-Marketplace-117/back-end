@@ -12,7 +12,7 @@ function find(){
 function findByUsername(username) {
     return db("users as u")
     .where("u.username", username)
-    .first("u.id", "u.username", "u.password");
+    .first("u.id", "u.username", "u.email", "u.password");
 }
 
 module.exports = {

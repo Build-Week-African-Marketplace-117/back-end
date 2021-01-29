@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 // Endpoint for Registering a new User.
 router.post("/register", async (req, res, next) => {
     try {
-        const {username, password} = req.body;
+        const {username, email, password} = req.body;
         const user = await Users.findByUsername(username)
 
         if (user) {
@@ -27,6 +27,7 @@ router.post("/register", async (req, res, next) => {
 
         const newUser = await Users.add({
             username,
+            email,
             password: await bcrypt.hash(password, 10)
         })
 
@@ -58,9 +59,10 @@ router.post("/login", async (req, res, next) => {
             userId: user.id,
         }, process.env.JWT_SECRET)
 
+        res.cookie("token", token)
+
         res.json({
             message: `Welcome ${user.username}`,
-            token: token,
         })
     } catch (err){
         next(err)
