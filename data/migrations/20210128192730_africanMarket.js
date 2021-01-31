@@ -1,13 +1,13 @@
 exports.up = async function (knex) {
   await knex.schema.createTable("users", (table) => {
-    table.increments("id");
+    table.increments("id").primary();
     table.text("username").notNull().unique();
     table.text("email").notNull().unique();
     table.text("password").notNull();
   });
 
   await knex.schema.createTable("items", (table) => {
-    table.increments("id");
+    table.increments("id").primary();
     table.text("location").notNull();
     table.text("name").notNull();
     table.text("description").notNull();
@@ -15,7 +15,7 @@ exports.up = async function (knex) {
   });
 
   await knex.schema.createTable("categories", (table) => {
-    table.increments("id");
+    table.increments("id").primary();
     table.text("name").notNull().unique();
     table.float("priceLow").notNull();
     table.float("priceHigh").notNull();

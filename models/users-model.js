@@ -20,9 +20,17 @@ function findByUsername(username) {
     .first("u.id", "u.username", "u.email", "u.password");
 }
 
+function findItems(userID) {
+    return db("users_items as ui")
+    .innerJoin("users as u", "ui.user_id", "u.id")
+    .innerJoin("items as i", "ui.item_id", "i.id")
+    .where("u.id", userID)
+}
+
 module.exports = {
     add,
     find,
     findByUsername,
-    findById
+    findById, 
+    findItems
 }

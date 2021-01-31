@@ -16,7 +16,16 @@ router.get("/", async (req, res, next) => {
 // Endpoint to READ a specific User.
 router.get("/:id", async (req, res, next) => {
     try {
-        res.json(await Users.findById())
+        res.json(await Users.findById(req.params.id))
+    } catch (err){
+        next(err)
+    }
+})
+// Endpoint to READ a specific Users Items.
+router.get("/:id/items", async (req, res, next) => {
+    try {
+        const items = await Users.findItems(req.params.id)
+        res.json(items)
     } catch (err){
         next(err)
     }
