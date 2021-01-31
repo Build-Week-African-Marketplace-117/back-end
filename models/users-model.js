@@ -9,6 +9,11 @@ function find(){
     return db("users")
 }
 
+function findById(id){
+    return db("users")
+    .where({id})
+}
+
 function findByUsername(username) {
     return db("users as u")
     .where("u.username", username)
@@ -18,5 +23,6 @@ function findByUsername(username) {
 module.exports = {
     add,
     find,
-    findByUsername
+    findByUsername,
+    findById
 }

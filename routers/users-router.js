@@ -13,7 +13,15 @@ router.get("/", async (req, res, next) => {
         next(err)
     }
 })
-// Endpoint for Registering a new User.
+// Endpoint to READ a specific User.
+router.get("/:id", async (req, res, next) => {
+    try {
+        res.json(await Users.findById())
+    } catch (err){
+        next(err)
+    }
+})
+// Endpoint to CREATE Registering a new User.
 router.post("/register", async (req, res, next) => {
     try {
         const {username, email, password} = req.body;
@@ -36,7 +44,7 @@ router.post("/register", async (req, res, next) => {
         next(err)
     }
 })
-// Endpoint for Logging In an existing User
+// Endpoint for Logging In an existing User.
 router.post("/login", async (req, res, next) => {
     try {
         const {username, password} = req.body;
@@ -68,5 +76,7 @@ router.post("/login", async (req, res, next) => {
         next(err)
     }
 })
+// Endpoint to UPDATE existing User.
+router.put("")
 
 module.exports = router;
