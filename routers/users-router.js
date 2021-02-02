@@ -89,7 +89,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 // Endpoint to UPDATE existing User.
-router.put("/:id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   Users.update(req.params.id, req.body)
     .then((user) => {
       if (user) {
@@ -108,7 +108,7 @@ router.put("/:id", (req, res) => {
     });
 });
 // Endpoint to DELETE a User
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   Users.remove(req.params.id)
     .then((count) => {
       if (count > 0) {
