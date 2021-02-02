@@ -28,4 +28,8 @@ router.post("/list", async (req, res, next) => {
     }
 })
 
+router.put("/:id")
+
+router.delete("/:id")
+
 module.exports = router;
