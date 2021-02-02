@@ -12,6 +12,7 @@ function find(){
 function findById(id){
     return db("users")
     .where({id})
+    .first()
 }
 
 function findByUsername(username) {
@@ -27,10 +28,26 @@ function findItems(userID) {
     .where("u.id", userID)
 }
 
+async function update(id, changes) {
+    await db("users")
+    .where({id})
+    .update(changes)
+
+    return findById(id)
+}
+
+function remove(id) {
+    return db("users")
+    .where({id})
+    .del()
+}
+
 module.exports = {
     add,
     find,
     findByUsername,
     findById, 
-    findItems
+    findItems,
+    update, 
+    remove  
 }
