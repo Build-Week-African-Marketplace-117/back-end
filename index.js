@@ -21,7 +21,7 @@ server.use("/api/categories", categoriesRouter);
 server.use("/api/items", itemsRouter);
 
 server.get("/", (req, res) => {
-  res.json({ api: "up" });
+  res.status(200).json({ api: "up", dbenv: process.env.DB_ENV });
 });
 // server.use((err, req, res, next) => {
 //     console.log(err)
