@@ -6,9 +6,9 @@ const Users = require("../models/users-model");
 const router = express.Router();
 
 // Endpoint to retrieve list of Users.
-router.get("/", async (req, res, next) => {
+router.get("/", async (req, res) => {
   Users.find()
-    .then((users) => {
+    .then(users => {
       res.status(200).json(users);
     })
     .catch((err) => {
