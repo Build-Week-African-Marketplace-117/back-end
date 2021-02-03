@@ -7,11 +7,18 @@ const router = express.Router();
 
 // Endpoint to retrieve list of Users.
 router.get("/", async (req, res, next) => {
-  try {
-    res.json(await Users.find());
-  } catch (err) {
-    next(err);
-  }
+  Users.find()
+    .then((users) => {
+      res.status(200).json(users);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+  //   try {
+  //     res.json(await Users.find());
+  //   } catch (err) {
+  //     next(err);
+  //   }
 });
 // Endpoint to READ a specific User.
 router.get("/:id", async (req, res, next) => {
