@@ -12,6 +12,7 @@ router.get("/", async (req, res, next) => {
       res.status(200).json(users);
     })
     .catch((err) => {
+      console.log("ERROR HERE");
       res.status(500).json(err);
     });
   //   try {
