@@ -32,6 +32,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.16",
     "node-pre-gyp": "^0.17.0",
+    "pg": "^8.5.1",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
