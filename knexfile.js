@@ -19,19 +19,19 @@ module.exports = {
     },
   },
   staging: {
-	client: "postgresql",
-	connection: {
-		database: "my_db",
-		user: "username",
-		password: "password"
-	},
-	pool: {
-		min: 2,
-		max: 10
-	}, 
-	migrations: {
-		tableName: "knex_migrations"
-	}
+    client: "postgresql",
+    connection: {
+      database: "my_db",
+      user: "username",
+      password: "password",
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: "knex_migrations",
+    },
   },
   testing: {
     client: "sqlite3",
@@ -53,20 +53,19 @@ module.exports = {
     },
   },
   production: {
-
-	client: "pg",
-	connection: process.env.DATABASE_URL,
-	pool: {
-		min: 2,
-		max: 10,
-	},
-	migrations: {
-		directory: "./data/migrations"
-	}
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      directory: "./data/migrations",
+    },
     // client: "pg",
     // useNullAsDefault: true,
-	// connection: process.env.DATABASE_URL,
-	//  {
+    // connection: process.env.DATABASE_URL,
+    //  {
     //   filename: "./data/africanMarket.db3",
     // },
     // migrations: {
