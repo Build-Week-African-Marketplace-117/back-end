@@ -26,6 +26,7 @@ function findItems(userID) {
     .innerJoin("users as u", "ui.user_id", "u.id")
     .innerJoin("items as i", "ui.item_id", "i.id")
     .where("u.id", userID)
+    .select("i.location", "i.name", "i.description", "i.price")
 }
 
 async function update(id, changes) {
