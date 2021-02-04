@@ -1,9 +1,9 @@
 const express = require("express")
 const Categories = require("../models/categories-model")
-
+const {restrict} = require("../middleware/users-middleware")
 const router = express.Router()
 
-router.get("/", async (req, res, next) => {
+router.get("/", restrict(), async (req, res, next) => {
     try {
         res.json(await Categories.find())
     } catch (err){
