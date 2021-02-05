@@ -11,9 +11,16 @@ router.get("/", (req, res) => {
     .then((users) => {
       res.status(200).json(users);
     })
+    .then(()=> {
+      console.log("string")
+    })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      console.error(err);
+      console.log("error tripped")
+      res.status(500).json({
+        message: "Error is fine", 
+        err
+      });
     });
   //   try {
   //     res.json(await Users.find());
