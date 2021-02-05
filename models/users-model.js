@@ -11,9 +11,10 @@ function find(){
 }
 
 function findById(id){
-    return db("users")
+    return db("users as u")
     .where({id})
     .first()
+    .select("u.username")
 }
 
 function findByUsername(username) {
