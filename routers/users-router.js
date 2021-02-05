@@ -2,21 +2,18 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../models/users-model");
+const {restrict} = require("../middleware/users-middleware")
 
 const router = express.Router();
 
 // Endpoint to retrieve list of Users.
-router.get("/", (req, res) => {
+router.get("/", restrict(), (req, res) => {
   Users.find()
     .then((users) => {
       res.status(200).json(users);
     })
-    .then(()=> {
-      console.log("string")
-    })
     .catch((err) => {
       console.error(err);
-      console.log("error tripped")
       res.status(500).json({
         message: "Error is fine", 
         err

@@ -1,25 +1,44 @@
-# back-end for African Marketplace 117 Build Week 
+# Back-End Application for African Marketplace 117 Build Week 
 
+# Heroku App Base URL:
 
+https://african-market-117-be.herokuapp.com
 
-# Heroku App Base URL
+# USERS
 
-https://african-market-117-back-end.herokuapp.com/
+## Endpoint To Register New User:
 
-USERS INFORMATION
+https://african-market-117-be.herokuapp.com/api/users/register
 
-# Endpoint To Register New User
+## Endpoint To Login Existing User:
 
-https://african-market-117-back-end.herokuapp.com/api/users/register
+https://african-market-117-be.herokuapp.com/api/users/login
 
-# Endpoint To Login Existing User
+## Endpoint To Update User: 
 
-https://african-market-117-back-end.herokuapp.com/api/users/login
+https://african-market-117-be.herokuapp.com/api/users/update/:id 
 
-# Endpoint To Update User. The id at the end will probably need to be set as `${id}`
+## Endpoint To Delete User: 
 
-https://african-market-117-back-end.herokuapp.com/api/users/update/:id 
+https://african-market-117-be.herokuapp.com/api/users/delete/:id
 
-# Endpoint To Delete User. The id will probably need to be like update with `${id}` as well. 
+## Endpoint To Read List of Users (Must be logged in):
 
-https://african-market-117-back-end.herokuapp.com/api/users/delete/:id
+https://african-market-117-be.herokuapp.com/api/users
+
+# CATEGORIES 
+
+## Endpoint To Read List of Categories (Must be logged in): 
+
+https://african-market-117-be.herokuapp.com/api/categories
+
+# Items
+
+## Endpoint To Read All Items: 
+
+https://african-market-117-be.herokuapp.com/api/items
+
+## Endpoint To Read Items from Specific User: 
+
+https://african-market-117-be.herokuapp.com/api/users/:id/items
+
