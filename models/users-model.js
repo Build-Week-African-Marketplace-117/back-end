@@ -7,6 +7,7 @@ async function add(user){
 
 function find(){
     return db("users")
+    .select("*")
 }
 
 function findById(id){
