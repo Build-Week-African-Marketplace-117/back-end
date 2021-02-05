@@ -6,15 +6,16 @@ const Users = require("../models/users-model");
 const router = express.Router();
 
 // Endpoint to retrieve list of Users.
-router.get("/", async (req, res) => {
-  Users.find()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch((err) => {
-      console.log("ERROR HERE");
-      res.status(500).json(err);
-    });
+router.get("/",  (req, res) => {
+  res.send("hello")
+  // Users.find()
+  //   .then(users => {
+  //     res.status(200).json(users);
+  //   })
+  //   .catch((err) => {
+  //     console.log("ERROR HERE");
+  //     res.status(500).json(err);
+  //   });
   //   try {
   //     res.json(await Users.find());
   //   } catch (err) {
