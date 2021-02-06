@@ -1,14 +1,5 @@
 const supertest = require("supertest");
 const server = require("../server");
-// const db = require("../data/config");
-
-// beforeEach(async () => {
-//     await db.seed.run()
-// })
-
-// afterAll(async () => {
-//     await db.destroy()
-// })
 
 describe("Various users integration tests", () => {
   it("tries to get a list of users, but should get 401 unauthorized", async () => {

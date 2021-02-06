@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../models/users-model");
-const {restrict} = require("../middleware/users-middleware")
+const { restrict } = require("../middleware/users-middleware");
 
 const router = express.Router();
 
@@ -15,31 +15,27 @@ router.get("/", restrict(), (req, res) => {
     .catch((err) => {
       console.error(err);
       res.status(500).json({
-        message: "Error is fine", 
-        err
+        message: "Error is fine",
+        err,
       });
     });
-  //   try {
-  //     res.json(await Users.find());
-  //   } catch (err) {
-  //     next(err);
-  //   }
 });
+
 // Endpoint to READ a specific User.
 router.get("/:id", async (req, res, next) => {
   try {
-    // res.json(await Users.findById(req.params.id));
-    const user = await Users.findById(req.params.id)
+    const user = await Users.findById(req.params.id);
     if (!user) {
       return res.status(404).json({
         message: "User not found",
-      })
+      });
     }
-    res.json(user)
+    res.json(user);
   } catch (err) {
     next(err);
   }
 });
+
 // Endpoint to READ a specific Users Items.
 router.get("/:id/items", async (req, res, next) => {
   try {
@@ -49,6 +45,7 @@ router.get("/:id/items", async (req, res, next) => {
     next(err);
   }
 });
+
 // Endpoint to CREATE Registering a new User.
 router.post("/register", async (req, res, next) => {
   try {
@@ -72,6 +69,7 @@ router.post("/register", async (req, res, next) => {
     next(err);
   }
 });
+
 // Endpoint for Logging In an existing User.
 router.post("/login", async (req, res, next) => {
   try {
@@ -107,8 +105,9 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
 // Endpoint to UPDATE existing User.
-router.put("/update/:id", (req, res) => {
+router.put("/update/:id", restrict(), (req, res) => {
   Users.update(req.params.id, req.body)
     .then((user) => {
       if (user) {
@@ -126,8 +125,9 @@ router.put("/update/:id", (req, res) => {
       });
     });
 });
+
 // Endpoint to DELETE a User
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", restrict(), (req, res) => {
   Users.remove(req.params.id)
     .then((count) => {
       if (count > 0) {

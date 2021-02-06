@@ -11,7 +11,6 @@ const itemsRouter = require("./routers/items-router");
 
 const server = express();
 
-
 server.use(helmet());
 server.use(cors());
 server.use(morgan("dev"));
@@ -25,6 +24,5 @@ server.use("/api/items", itemsRouter);
 server.get("/", (req, res) => {
   res.status(200).json({ api: "up", dbenv: process.env.DB_ENV });
 });
-
 
 module.exports = server;
