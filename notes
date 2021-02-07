@@ -1,1 +1,29 @@
 //cross-env DB_ENV=testing jest --watch --verbose --runInBand
+
+
+
+
+// const db = require("../data/config")
+
+// beforeEach(async () => {
+//     await db.seed.run();
+//   });
+  
+//   afterAll(async () => {
+//     await db.destroy();
+//   });
+
+it("creates a new user", async () => {
+      const res = await supertest(server)
+      .post("/api/users/register")
+      .send({
+          username: "Turtle_Lover",
+          email: "iloveturtles@gmail.com",
+          password: "turtles"
+      })
+      expect(res.statusCode).toBe(201)
+      expect(res.type).toBe("application/json")
+      expect(res.body.username).toBe("Turtle_Lover")
+  })
+
+
