@@ -102,6 +102,7 @@ router.post("/login", async (req, res, next) => {
       message: `Welcome ${user.username}`,
     });
   } catch (err) {
+    console.log(err)
     next(err);
   }
 });
